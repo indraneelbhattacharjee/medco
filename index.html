@@ -4,24 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Opioid Distribution in Los Angeles</title>
+    <!-- Link to the external CSS file -->
     <link rel="stylesheet" href="styles.css">
+    <!-- Include Vega, Vega-Lite, and Vega-Embed scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.15.1"></script>
 </head>
 <body>
-    <div class="container">
+    <div class="dashboard">
         <h1>Opioid Distribution in Los Angeles</h1>
         <div class="controls">
-            <label for="chartType">Chart Type:</label>
-            <select id="chartType">
+            <label for="chart-select">Chart Type:</label>
+            <select id="chart-select" onchange="updateChart()">
                 <option value="scatter">Scatter Chart</option>
                 <option value="bar">Bar Chart</option>
                 <option value="pie">Pie Chart</option>
             </select>
         </div>
-        <div id="chart"></div>
+        <div class="chart-container" id="chart"></div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/vega@5.22.0"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.6.0"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.21.0"></script>
+    <!-- Link to the external JavaScript file -->
     <script src="script.js"></script>
 </body>
 </html>

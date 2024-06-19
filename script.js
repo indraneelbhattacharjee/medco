@@ -1,5 +1,3 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Sample data from the CSV file
     const data = [
         { "Reporter_family": "AmerisourceBergen Drug", "total_dosage_unit": 685262870, "total_mme": 5978893756.384775, "total_records": 1093350 },
         { "Reporter_family": "McKesson Corporation", "total_dosage_unit": 538314600, "total_mme": 5492723802.935328, "total_records": 1363764 },
@@ -33,68 +31,69 @@ document.addEventListener('DOMContentLoaded', () => {
         { "Reporter_family": "GENCO I", "total_dosage_unit": 0, "total_mme": 0, "total_records": 4 }
     ];
 
-    const vegaLiteSchema = "https://vega.github.io/schema/vega-lite/v5.json";
-
-    const scatterSpec = {
-        "$schema": vegaLiteSchema,
-        "description": "A scatter plot showing total dosage units vs total MME.",
-        "data": { "values": data },
-        "mark": "point",
-        "encoding": {
-            "x": { "field": "total_dosage_unit", "type": "quantitative" },
-            "y": { "field": "total_mme", "type": "quantitative" },
-            "tooltip": [{ "field": "Reporter_family", "type": "nominal" }]
-        },
-        "width": "container",
-        "height": "container"
-    };
-
-    const barSpec = {
-        "$schema": vegaLiteSchema,
-        "description": "A bar chart showing total dosage units per reporter family.",
-        "data": { "values": data },
-        "mark": "bar",
-        "encoding": {
-            "x": { "field": "Reporter_family", "type": "nominal", "sort": "-y" },
-            "y": { "field": "total_dosage_unit", "type": "quantitative" },
-            "tooltip": [{ "field": "Reporter_family", "type": "nominal" }, { "field": "total_dosage_unit", "type": "quantitative" }]
-        },
-        "width": "container",
-        "height": "container"
-    };
-
-    const pieSpec = {
-        "$schema": vegaLiteSchema,
-        "description": "A pie chart showing the distribution of total dosage units by reporter family.",
-        "data": { "values": data },
-        "mark": { "type": "arc", "tooltip": true },
-        "encoding": {
-            "theta": { "field": "total_dosage_unit", "type": "quantitative" },
-            "color": { "field": "Reporter_family", "type": "nominal" },
-            "tooltip": [{ "field": "Reporter_family", "type": "nominal" }, { "field": "total_dosage_unit", "type": "quantitative" }]
-        },
-        "width": "container",
-        "height": "container"
-    };
-
-    const specs = {
-        scatter: scatterSpec,
-        bar: barSpec,
-        pie: pieSpec
-    };
-
-    const chartTypeSelector = document.getElementById('chartType');
-    const chartContainer = document.getElementById('chart');
-
-    function renderChart(type) {
-        const spec = specs[type];
-        vegaEmbed('#chart', spec, { actions: false });
+const scatterSpec = {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "A scatter plot showing total dosage units vs total MME.",
+    "data": { "values": data },
+    "mark": "point",
+    "encoding": {
+        "x": { "field": "total_dosage_unit", "type": "quantitative" },
+        "y": { "field": "total_mme", "type": "quantitative" },
+        "tooltip": [{ "field": "Reporter_family", "type": "nominal" }]
+    },
+    "width": "container",
+    "height": 500,
+    "selection": {
+        "grid": {
+            "type": "interval", "bind": "scales"
+        }
     }
+};
 
-    chartTypeSelector.addEventListener('change', (e) => {
-        renderChart(e.target.value);
-    });
+const barSpec = {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "A bar chart showing total dosage units per reporter family.",
+    "data": { "values": data },
+    "mark": "bar",
+    "encoding": {
+        "x": { "field": "Reporter_family", "type": "nominal", "sort": "-y" },
+        "y": { "field": "total_dosage_unit", "type": "quantitative" },
+        "tooltip": [
+            { "field": "Reporter_family", "type": "nominal" },
+            { "field": "total_dosage_unit", "type": "quantitative" }
+        ]
+    },
+    "width": "container",
+    "height": 500
+};
 
-    // Initial render
-    renderChart(chartTypeSelector.value);
-});
+const pieSpec = {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "A pie chart showing the distribution of total dosage units by reporter family.",
+    "data": { "values": data },
+    "mark": { "type": "arc", "tooltip": true },
+    "encoding": {
+        "theta": { "field": "total_dosage_unit", "type": "quantitative" },
+        "color": { "field": "Reporter_family", "type": "nominal" },
+        "tooltip": [
+            { "field": "Reporter_family", "type": "nominal" },
+            { "field": "total_dosage_unit", "type": "quantitative" }
+        ]
+    },
+    "width": 500,
+    "height": 500
+};
+
+const specs = {
+    scatter: scatterSpec,
+    bar: barSpec,
+    pie: pieSpec
+};
+
+function updateChart() {
+    const chartType = document.getElementById("chart-select").value;
+    const chartSpec = specs[chartType];
+    vegaEmbed('#chart', chartSpec, { actions: false });
+}
+
+updateChart();
