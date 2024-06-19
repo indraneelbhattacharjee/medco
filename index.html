@@ -21,9 +21,52 @@
                 <option value="bar">Bar Chart</option>
                 <option value="pie">Pie Chart</option>
             </select>
+            <!-- Button to view the write-up -->
+            <button id="view-writeup" onclick="showWriteUp()">View Write-Up</button>
         </div>
         <div class="chart-container" id="chart"></div>
     </div>
+
+    <!-- Modal for the write-up -->
+    <div id="writeup-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeWriteUp()">&times;</span>
+            <h2>Project Write-Up</h2>
+            <div id="writeup-content">
+                <!-- The write-up content goes here -->
+                <p><strong>Project Overview:</strong> This project, developed by Indraneel Bhattacharjee and Legna Saca, presents an interactive visualization of opioid distribution data in Los Angeles County.</p>
+                <p><strong>Design Rationale:</strong></p>
+                <ul>
+                    <li><strong>Scatter Plot:</strong> This visualization shows the relationship between total dosage units and total MME.</li>
+                    <li><strong>Bar Chart:</strong> This chart provides a clear comparison of the total dosage units distributed by each reporter family.</li>
+                    <li><strong>Pie Chart:</strong> This chart illustrates the proportional distribution of total dosage units among reporter families.</li>
+                </ul>
+                <p><strong>Development Process:</strong></p>
+                <ul>
+                    <li><strong>Team Contributions:</strong> Indraneel Bhattacharjee and Legna Saca collaborated on all aspects of the project.</li>
+                    <li><strong>Time Spent:</strong> Approximately 20 hours were spent on the project.</li>
+                    <li><strong>Development Highlights:</strong> Implementing the dropdown for chart selection and tooltips was crucial.</li>
+                    <li><strong>Technical Challenges:</strong> Preprocessing the data to fit Vega-Lite's requirements was essential.</li>
+                </ul>
+                <p><strong>Features and Enhancements:</strong></p>
+                <ul>
+                    <li><strong>Interactive Chart Selector:</strong> Allows users to choose between scatter, bar, and pie charts.</li>
+                    <li><strong>Responsive Design:</strong> The charts resize dynamically to fit the screen.</li>
+                    <li><strong>Detailed Tooltips:</strong> Hovering over data points reveals additional information.</li>
+                    <li><strong>Modern Aesthetics:</strong> The application features a dark theme with smooth transitions.</li>
+                    <li><strong>Embedded Data:</strong> The dataset is directly embedded into the JavaScript file.</li>
+                </ul>
+                <p><strong>Conclusion:</strong> The project successfully meets the requirements for interactive visualization.</p>
+                <p><strong>Future Improvements:</strong></p>
+                <ul>
+                    <li><strong>Dynamic Filtering:</strong> Enabling users to filter data based on specific criteria or ranges.</li>
+                    <li><strong>Multi-View Coordination:</strong> Implementing coordinated views where interactions in one chart affect the display in another.</li>
+                    <li><strong>Animated Transitions:</strong> Adding smooth transitions between different chart types.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
     <!-- Link to the external JavaScript file -->
     <script src="script.js"></script>
 </body>
