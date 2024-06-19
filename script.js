@@ -32,7 +32,6 @@
     ];
 
 
-// Define chart specifications
 const scatterSpec = {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "description": "A scatter plot showing total dosage units vs total MME.",
@@ -86,24 +85,20 @@ const pieSpec = {
     "height": 500
 };
 
-// Mapping the chart types to their respective specifications
 const specs = {
     scatter: scatterSpec,
     bar: barSpec,
     pie: pieSpec
 };
 
-// Function to update the chart based on the selected type
 function updateChart() {
     const chartType = document.getElementById("chart-select").value;
     const chartSpec = specs[chartType];
     vegaEmbed('#chart', chartSpec, { actions: false });
 }
 
-// Initialize with scatter chart
 updateChart();
 
-// Functions to show and hide the write-up modal
 function showWriteUp() {
     document.getElementById("writeup-modal").style.display = "block";
 }
@@ -112,7 +107,6 @@ function closeWriteUp() {
     document.getElementById("writeup-modal").style.display = "none";
 }
 
-// Add event listener to close the modal when clicking outside of it
 window.onclick = function(event) {
     const modal = document.getElementById("writeup-modal");
     if (event.target === modal) {

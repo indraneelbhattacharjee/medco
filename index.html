@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Opioid Distribution in Los Angeles</title>
-    <!-- Link to the external CSS file -->
     <link rel="stylesheet" href="styles.css">
-    <!-- Include Vega, Vega-Lite, and Vega-Embed scripts -->
     <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.15.1"></script>
@@ -21,19 +19,16 @@
                 <option value="bar">Bar Chart</option>
                 <option value="pie">Pie Chart</option>
             </select>
-            <!-- Button to view the write-up -->
             <button id="view-writeup" onclick="showWriteUp()">View Write-Up</button>
         </div>
         <div class="chart-container" id="chart"></div>
     </div>
 
-    <!-- Modal for the write-up -->
     <div id="writeup-modal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeWriteUp()">&times;</span>
             <h2>Project Write-Up</h2>
             <div id="writeup-content">
-                <!-- The write-up content goes here -->
                 <p><strong>Project Overview:</strong> This project, developed by Indraneel Bhattacharjee and Legna Saca, presents an interactive visualization of opioid distribution data in Los Angeles County.</p>
                 <p><strong>Design Rationale:</strong></p>
                 <ul>
@@ -67,7 +62,6 @@
         </div>
     </div>
 
-    <!-- Link to the external JavaScript file -->
     <script src="script.js"></script>
 </body>
 </html>
