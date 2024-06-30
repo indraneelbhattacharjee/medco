@@ -18,13 +18,49 @@
                 <option value="scatter">Scatter Chart</option>
                 <option value="bar">Bar Chart</option>
                 <option value="pie">Pie Chart</option>
+                <option value="line">Line Chart</option>
             </select>
-            <button id="view-writeup" onclick="showWriteUp()">View Write-Up</button>
+            
+    <label for="filter-select">Filter by Reporter Family:</label>
+    <select id="filter-select" onchange="updateChart()">
+        <option value="">All</option>
+        <option value="AmerisourceBergen Drug">AmerisourceBergen Drug</option>
+        <option value="McKesson Corporation">McKesson Corporation</option>
+        <option value="Cardinal Health">Cardinal Health</option>
+        <option value="CVS">CVS</option>
+        <option value="Kaiser Permanente">Kaiser Permanente</option>
+        <option value="H. D. Smith">H. D. Smith</option>
+        <option value="Walgreen Co">Walgreen Co</option>
+        <option value="Thrifty Payless Inc">Thrifty Payless Inc</option>
+        <option value="Valley Wholesale Drug Co">Valley Wholesale Drug Co</option>
+        <option value="Wal-Mart">Wal-Mart</option>
+        <option value="CVS Pharmacy Inc">CVS Pharmacy Inc</option>
+        <option value="Smith Drug Company">Smith Drug Company</option>
+        <option value="Kroger">Kroger</option>
+        <option value="Rite Aid">Rite Aid</option>
+        <option value="H.E. Butt">H.E. Butt</option>
+        <option value="Dierbergs Markets">Dierbergs Markets</option>
+        <option value="Meijer">Meijer</option>
+        <option value="Albertsons">Albertsons</option>
+        <option value="Sam's East">Sam's East</option>
+        <option value="United Supermarkets">United Supermarkets</option>
+        <option value="Safeway">Safeway</option>
+        <option value="Publix">Publix</option>
+        <option value="CVS Pharmacy LLC">CVS Pharmacy LLC</option>
+        <option value="Fred's Pharmacy">Fred's Pharmacy</option>
+        <option value="Giant Eagle">Giant Eagle</option>
+        <option value="Cameron Drugs">Cameron Drugs</option>
+        <option value="Costco">Costco</option>
+        <option value="Whitesell & Co.">Whitesell & Co.</option>
+        <option value="Bergdoll Drug">Bergdoll Drug</option>
+        <option value="GENCO I">GENCO I</option>
+    </select>
+    
+    <button id="view-writeup" onclick="showWriteUp()">View Write-Up</button>
         </div>
         <div class="chart-container" id="chart"></div>
     </div>
-
-    <div id="writeup-modal" class="modal">
+        <div id="writeup-modal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeWriteUp()">&times;</span>
             <h2>Project Write-Up</h2>
@@ -35,6 +71,7 @@
                     <li><strong>Scatter Plot:</strong> This visualization shows the relationship between total dosage units and total MME.</li>
                     <li><strong>Bar Chart:</strong> This chart provides a clear comparison of the total dosage units distributed by each reporter family.</li>
                     <li><strong>Pie Chart:</strong> This chart illustrates the proportional distribution of total dosage units among reporter families.</li>
+                    <li><strong>Line Chart:</strong></li>
                 </ul>
                 <p><strong>Development Process:</strong></p>
                 <ul>

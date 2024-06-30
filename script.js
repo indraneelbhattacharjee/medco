@@ -31,6 +31,24 @@
         { "Reporter_family": "GENCO I", "total_dosage_unit": 0, "total_mme": 0, "total_records": 4 }
     ];
 
+    const lineSpec = {
+        "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+        "description": "A line chart showing total MME over total records.",
+        "data": { "values": data },
+        "mark": "line",
+        "encoding": {
+            "x": { "field": "total_records", "type": "quantitative" },
+            "y": { "field": "total_mme", "type": "quantitative" },
+            "color": { "field": "Reporter_family", "type": "nominal" },
+            "tooltip": [
+                { "field": "Reporter_family", "type": "nominal" },
+                { "field": "total_mme", "type": "quantitative" },
+                { "field": "total_records", "type": "quantitative" }
+            ]
+        },
+        "width": "container",
+        "height": 500
+    };
 
 const scatterSpec = {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
@@ -88,13 +106,29 @@ const pieSpec = {
 const specs = {
     scatter: scatterSpec,
     bar: barSpec,
-    pie: pieSpec
+    pie: pieSpec,
+    line: lineSpec
 };
 
 function updateChart() {
     const chartType = document.getElementById("chart-select").value;
-    const chartSpec = specs[chartType];
+    const filterValue = document.getElementById("filter-select").value;
+
+    let filteredData = data;
+    if (filterValue) {
+        filteredData = data.filter(d => d.Reporter_family === filterValue);
+    }
+    const chartSpec = {...specs[chartType], data: { values: filteredData } };
     vegaEmbed('#chart', chartSpec, { actions: false });
+   // document.getElementById(`${chartType}-description`).style.display = "block";
+    const descriptions = document.querySelectorAll('.chart-description');
+    descriptions.forEach(desc => {
+        if (desc.id === `${chartType}-description`) {
+            desc.style.display = "block";
+        } else {
+            desc.style.display = "none";
+        }
+    });
 }
 
 updateChart();
