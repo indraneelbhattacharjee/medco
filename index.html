@@ -8,7 +8,10 @@
     <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.15.1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
 </head>
+
 <body>
     <div class="dashboard">
         <h1>Opioid Distribution in Los Angeles</h1>
@@ -18,7 +21,9 @@
                 <option value="scatter">Scatter Chart</option>
                 <option value="bar">Bar Chart</option>
                 <option value="pie">Pie Chart</option>
-                <option value="line">Line Chart</option>
+                <option value="scatterTrend">Scatter Trend Chart</option>
+                <option value="stackedBar">Stacked Bar</option>
+                <option value="histogram">Histogram</option>
             </select>
             
     <label for="filter-select">Filter by Reporter Family:</label>
@@ -57,8 +62,11 @@
     </select>
     
     <button id="view-writeup" onclick="showWriteUp()">View Write-Up</button>
-        </div>
+       
+    <h1 id= "question" ></h1> 
+     </div>
         <div class="chart-container" id="chart"></div>
+        
     </div>
         <div id="writeup-modal" class="modal">
         <div class="modal-content">
@@ -95,10 +103,15 @@
                     <li><strong>Multi-View Coordination:</strong> Implementing coordinated views where interactions in one chart affect the display in another.</li>
                     <li><strong>Animated Transitions:</strong> Adding smooth transitions between different chart types.</li>
                 </ul>
-            </div>
+            
         </div>
+       </div>
     </div>
+    
+    <div>
+        <h2 id= "chart-description"></h2>
 
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
